@@ -18,7 +18,7 @@ public class WordProcessor {
             return "Input must be more than one word";
         }
 
-        String outputString;
+        StringBuilder outputString;
 
         //hold first word in temp variable
         String temp = inputArray[0];
@@ -28,18 +28,18 @@ public class WordProcessor {
         inputArray[1] = temp;
 
         //capitalize new first word, make second word lower case
-        outputString = inputArray[0].substring(0,1).toUpperCase() + inputArray[0].substring(1).toLowerCase();
-        outputString += " " + inputArray[1].toLowerCase();
+        outputString = new StringBuilder(inputArray[0].substring(0, 1).toUpperCase() + inputArray[0].substring(1).toLowerCase());
+        outputString.append(" ").append(inputArray[1].toLowerCase());
 
         //loop that converts array to String
         for (int i = 2; i < inputArray.length; i++){
-            outputString += " " + inputArray [i];
+            outputString.append(" ").append(inputArray[i]);
         }
 
         //replace '?' with '!'
-        outputString = outputString.replace('?', '!');
+        outputString = new StringBuilder(outputString.toString().replace('?', '!'));
 
-        return outputString;
+        return outputString.toString();
 
         
     }
